@@ -34,14 +34,15 @@ pre{ white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wra
 .conBox_1128 { width: 90%; max-width: 112.8rem; margin: 0 auto; }
 
 /* header */
-header { position: fixed; left: 0; right: 0; box-shadow: rgba(0,0,0,0.1) 0 0.8rem 0.8rem; }
+header { position: fixed; left: 0; right: 0; box-shadow: rgba(0,0,0,0.1) 0 0.8rem 0.8rem; z-index: 100; }
 header .conBox_1128 { position: relative; display: flex;justify-content:space-between; align-items: center; height: 8rem; }
 header h1 { font-size: 3.2rem; font-weight: 700;}
 header h1 img { width: 5.5rem; margin-right: 1.2rem; }
 header h1 span { vertical-align: middle; }
-header .dropDown > button { width: 3.4rem; height: 2.4rem; background: url('../public/ico_menu.png') center / 3.4rem; }
-header .dropDown ul { opacity: 0; height: 0; overflow: hidden; position: absolute; right: -4.4rem; top: 7.2rem; background-color: #fff; border-radius: 1.2rem; filter: drop-shadow(rgba(0,0,0,0.2) 0.1rem 0.4rem 2.1rem); width: 20rem; transition: all 0.5s; }
-header .dropDown.active ul { opacity: 1; height: auto; overflow: visible; transition: all 0.5s; }
+header .dropBack { position: fixed; left: 0; right: 0; top: 0; bottom: 0;}
+header .dropDown > button { width: 3.4rem; height: 2.4rem; background: url('../public/ico_menu.png') center / 3.4rem; position: relative; z-index: 1; }
+header .dropDown ul { opacity: 0; visibility: hidden; position: absolute; right: -4.4rem; top: 7.2rem; background-color: #fff; border-radius: 1.2rem; filter: drop-shadow(rgba(0,0,0,0.2) 0.1rem 0.4rem 2.1rem); width: 20rem; transition: all 0.5s; }
+header .dropDown.active ul { opacity: 1; visibility: visible; }
 header .dropDown ul:before { content: ''; display: block; position: absolute; top: -1.8rem; right:5.4rem; width: 1.6rem; height: 1.8rem; background: url(../public/ico_Polygon.png) center / 1.6rem; }
 header .dropDown li ~ li { border-top: 1px solid rgba(0, 0, 0, 0.1) }
 header .dropDown .user { height: 5rem; line-height: 5rem; text-align: center; }
