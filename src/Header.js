@@ -18,17 +18,18 @@ const Header = () => {
         </h1>
 
         <div className={isDown ? "dropDown active" : "dropDown"}>
+          {isDown ? <div className="dropBack" onClick={downHandler}></div> : null}
           <button onClick={downHandler}></button>
           <ul>
             <li className="user">노지선님, 안녕하세요!</li>
             <li>
-              <Link to="/product">
+              <Link to="/product" onClick={downHandler}>
                 <img src="../ico_product.png" />
                 상품리스트 페이지
               </Link>
             </li>
             <li>
-              <Link to="/bookmark">
+              <Link to="/bookmark" onClick={downHandler}>
                 <img src="../ico_bookmark.png" />
                 북마크 페이지
               </Link>
