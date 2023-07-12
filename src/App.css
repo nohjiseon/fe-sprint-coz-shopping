@@ -49,10 +49,11 @@ header .dropDown .user { height: 5rem; line-height: 5rem; text-align: center; }
 header .dropDown ul a { display: block; height: 5rem; line-height: 5rem; }
 header .dropDown ul a img { width: 2rem; margin-left: 2rem; margin-right: 0.8rem; }
 
-
-
 @media (max-width: 768px)
 {
     header .dropDown ul { right: 0; }
     header .dropDown ul:before { right: 0.9rem; }
 }
+
+/* footer */
+footer { display: flex; justify-content: center; align-items: center; flex-direction: column; border-top: 1px solid rgba(0, 0, 0, 0.1); height: 5.8rem; font-size: 1.2rem; color: #888; line-height: 1.8rem; }

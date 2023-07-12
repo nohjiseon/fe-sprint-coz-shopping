@@ -3,6 +3,7 @@ import "./App.css";
 
 import Header from "./Header";
 import Main from "./Main";
+import Footer from "./Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
