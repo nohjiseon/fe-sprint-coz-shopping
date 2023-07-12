@@ -10,9 +10,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Main />} />
-        </Routes>
+        <main className="conBox_1128">
+          <Routes>
+            <Route path="/" element={<Main />} />
+          </Routes>
+        </main>
         <Footer />
       </BrowserRouter>
     </div>
