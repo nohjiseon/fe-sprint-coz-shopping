@@ -18,7 +18,6 @@ label,img,input,select,textarea,button{vertical-align:middle;}
 hr{display:none;}
 main,header,section,nav,footer,aside,article,figure{display:block;}
 a{color:#000;text-decoration:none;}
-pre{ white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word; color: #000; line-height: 3rem; }
 
 /* rem rule */
 @media (max-width: 768px)
@@ -32,10 +31,11 @@ pre{ white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wra
 
 /* 공통 */
 .conBox_1128 { width: 90%; max-width: 112.8rem; margin: 0 auto; }
+main.conBox_1128 { padding: 10.4rem 0 2.4rem; min-height: calc(100vh - 5.8rem); }
 
 /* header */
-header { position: fixed; left: 0; right: 0; box-shadow: rgba(0,0,0,0.1) 0 0.8rem 0.8rem; z-index: 100; }
-header .conBox_1128 { position: relative; display: flex;justify-content:space-between; align-items: center; height: 8rem; }
+header { position: fixed; left: 0; right: 0; top: 0; box-shadow: rgba(0,0,0,0.1) 0 0.8rem 0.8rem; z-index: 100; background-color: #fff; }
+header .conBox_1128 { position: relative; display: flex; justify-content:space-between; align-items: center; height: 8rem; }
 header h1 { font-size: 3.2rem; font-weight: 700;}
 header h1 img { width: 5.5rem; margin-right: 1.2rem; }
 header h1 span { vertical-align: middle; }
@@ -57,3 +57,26 @@ header .dropDown ul a img { width: 2rem; margin-left: 2rem; margin-right: 0.8rem
 
 /* footer */
 footer { display: flex; justify-content: center; align-items: center; flex-direction: column; border-top: 1px solid rgba(0, 0, 0, 0.1); height: 5.8rem; font-size: 1.2rem; color: #888; line-height: 1.8rem; }
+
+/* main */
+.mainTit { display: block; font-size: 2.4rem; padding-bottom: 1.2rem; }
+.mainTit ~ .mainTit { padding-top: 1.2rem; }
+
+/* list 공통 */
+.list { display: flex; gap: 2.4rem; justify-content: space-between; }
+.list li { width: 25%; cursor: pointer; }
+.list .imgConbox { position: relative; display: flex; border-radius: 1.2rem; overflow: hidden; height: 21rem; }
+.list .imgConbox img { object-fit: cover; width: 100%; }
+.label_star { position: absolute; right: 1.2rem; bottom: 1.2rem; width: 2.4rem; height: 2.4rem; background: url('../public/ico_bookOff.png') no-repeat center / 2.4rem; transition: 0.3s; cursor: pointer; }
+.inp_star:checked + .label_star { background-image: url('../public/ico_bookOn.png'); }
+.txtConbox { display: flex; justify-content: space-between; padding-top: 1.2rem; line-height: 2.4rem; }
+.listTit strong { display: block; font-weight: 800; } 
+.listTit p { font-weight: 400; }
+.listPrice { text-align: right; }
+.col_blue { color: #452CDD; }
+
+@media (max-width: 768px)
+{
+    .list { flex-wrap: wrap; }
+    .list li { width: calc(50% - 1.2rem); }
+}
