@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 
+import Product from "./products/Product";
+import Category from "./products/Category";
+import Exhibition from "./products/Exhibition";
+import Brand from "./products/Brand";
+import ImgModal from "./ImgModal";
+
 const Main = () => {
   const [productItem, setProductItem] = useState([]);
 
@@ -33,58 +39,28 @@ const Main = () => {
       <h2 className="mainTit">상품 리스트</h2>
       <ul className="list">
         {productItem.map(item => (
-          <li key={item.id} onClick={popHandler}>
+          <li key={item.id} onClick={() => popHandler(item)}>
+            <ImgModal item={item} />
             <div className="imgConbox">
-              <img src={item.image_url === null ? item.brand_image_url : item.image_url} />
+              <img src={item.brand_image_url === null ? item.image_url : item.brand_image_url} />
               <input type="checkbox" id={item.id} className="hide inp_star" />
               <label htmlFor={item.id} className="label_star"></label>
             </div>
 
             {item.type === "Product" ? (
-              <div className="txtConbox">
-                <div className="listTit">
-                  <strong>{item.title}</strong>
-                </div>
-                <div className="listPrice">
-                  <strong className="col_blue">{item.discountPercentage}%</strong>
-                  <p>{Number(item.price).toLocaleString()}원</p>
-                </div>
-              </div>
+              <Product item={item} />
             ) : item.type === "Category" ? (
-              <div className="txtConbox">
-                <div className="listTit">
-                  <strong># {item.title}</strong>
-                </div>
-              </div>
+              <Category item={item} />
             ) : item.type === "Exhibition" ? (
-              <div className="txtConbox">
-                <div className="listTit">
-                  <strong>{item.title}</strong>
-                  <p>{item.sub_title}</p>
-                </div>
-              </div>
+              <Exhibition item={item} />
             ) : (
-              //  item.type === "Brand"
-              <div className="txtConbox">
-                <div className="listTit">
-                  <strong>{item.brand_name}</strong>
-                </div>
-                <div className="listPrice">
-                  <strong>관심고객수</strong>
-                  <p>{Number(item.follower).toLocaleString()}</p>
-                </div>
-              </div>
+              <Brand item={item} />
             )}
           </li>
         ))}
       </ul>
 
       <h2 className="mainTit">북마크 리스트</h2>
-
-      <div className="detailPop">
-        {/* <img src="" /> */}
-        {console.log(productItem[0].title)}
-      </div>
     </div>
   );
 };
