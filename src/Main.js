@@ -1,16 +1,35 @@
 import { useEffect, useState } from "react";
 
+import Product from "./products/Product";
+import Category from "./products/Category";
+import Exhibition from "./products/Exhibition";
+import Brand from "./products/Brand";
+import ImgModal from "./ImgModal";
+
 const Main = () => {
   const [productItem, setProductItem] = useState([]);
 
   const [isPop, setIsPop] = useState(false);
+  const [tempSrc, setTempSrc] = useState("");
+  const [tempTit, setTempTit] = useState("");
+  const [elId, elSetId] = useState("");
+  // const [isChk, setIsChk] = useState(false);
+
+  const getImg = (id, title, image_url, brand_image_url) => {
+    brand_image_url === null ? setTempSrc(image_url) : setTempSrc(brand_image_url);
+    setIsPop(true);
+    // setIsChk(!isChk);
+    setTempTit(title);
+    elSetId(id);
+  };
+
   const popHandler = () => {
     setIsPop(!isPop);
   };
 
-  //   useEffect(() => {
-  //     localStorage.setItem("productItem", JSON.stringify(productItem));
-  //   }, [productItem]);
+  // const chkHandler = () => {
+  //   setIsChk(!isChk);
+  // };
 
   useEffect(() => {
     fetch(`http://cozshopping.codestates-seb.link/api/v1/products?count=4`)
@@ -18,73 +37,49 @@ const Main = () => {
       .then(data => setProductItem(data));
   }, []);
 
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch("http://cozshopping.codestates-seb.link/api/v1/products?count=4");
-  //       const data = await response.json();
-  //       localStorage.setItem("fetchedData", JSON.stringify(data));
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch("http://cozshopping.codestates-seb.link/api/v1");
+  //     const data = await response.json();
+  //     localStorage.setItem("fetchedData", JSON.stringify(data));
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
   return (
     <div className="main_page">
       <h2 className="mainTit">상품 리스트</h2>
       <ul className="list">
         {productItem.map(item => (
-          <li key={item.id} onClick={popHandler}>
+          <li key={item.id} onClick={() => getImg(item.id, item.title, item.image_url, item.brand_image_url)}>
             <div className="imgConbox">
-              <img src={item.image_url === null ? item.brand_image_url : item.image_url} />
-              <input type="checkbox" id={item.id} className="hide inp_star" />
-              <label htmlFor={item.id} className="label_star"></label>
+              <img src={item.brand_image_url === null ? item.image_url : item.brand_image_url} />
+              <input
+                type="checkbox"
+                id={item.id}
+                className="hide inp_star"
+                onClick={event => event.stopPropagation()}
+              />
+              <label htmlFor={item.id} className="label_star" onClick={event => event.stopPropagation()}></label>
             </div>
 
             {item.type === "Product" ? (
-              <div className="txtConbox">
-                <div className="listTit">
-                  <strong>{item.title}</strong>
-                </div>
-                <div className="listPrice">
-                  <strong className="col_blue">{item.discountPercentage}%</strong>
-                  <p>{Number(item.price).toLocaleString()}원</p>
-                </div>
-              </div>
+              <Product item={item} />
             ) : item.type === "Category" ? (
-              <div className="txtConbox">
-                <div className="listTit">
-                  <strong># {item.title}</strong>
-                </div>
-              </div>
+              <Category item={item} />
             ) : item.type === "Exhibition" ? (
-              <div className="txtConbox">
-                <div className="listTit">
-                  <strong>{item.title}</strong>
-                  <p>{item.sub_title}</p>
-                </div>
-              </div>
+              <Exhibition item={item} />
             ) : (
-              //  item.type === "Brand"
-              <div className="txtConbox">
-                <div className="listTit">
-                  <strong>{item.brand_name}</strong>
-                </div>
-                <div className="listPrice">
-                  <strong>관심고객수</strong>
-                  <p>{Number(item.follower).toLocaleString()}</p>
-                </div>
-              </div>
+              <Brand item={item} />
             )}
           </li>
         ))}
       </ul>
 
-      <h2 className="mainTit">북마크 리스트</h2>
+      <ImgModal isPop={isPop} tempSrc={tempSrc} tempTit={tempTit} elId={elId} popHandler={popHandler} />
 
-      <div className="detailPop">
-        {/* <img src="" /> */}
-        {console.log(productItem[0].title)}
-      </div>
+      <h2 className="mainTit">북마크 리스트</h2>
     </div>
   );
 };

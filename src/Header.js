@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <header>
-      <div className="conBox_1128">
+      <div className="content_guide">
         <h1>
           <Link to="/">
             <img src="../coz_logo.png" />

@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <main className="conBox_1128">
+        <main className="content_guide">
           <Routes>
             <Route path="/" element={<Main />} />
           </Routes>

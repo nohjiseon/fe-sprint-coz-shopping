@@ -30,12 +30,12 @@ a{color:#000;text-decoration:none;}
 }
 
 /* 공통 */
-.conBox_1128 { width: 90%; max-width: 112.8rem; margin: 0 auto; }
-main.conBox_1128 { padding: 10.4rem 0 2.4rem; min-height: calc(100vh - 5.8rem); }
+.content_guide { width: 90%; max-width: 112.8rem; margin: 0 auto; }
+main.content_guide { padding: 10.4rem 0 2.4rem; min-height: calc(100vh - 5.8rem); }
 
 /* header */
 header { position: fixed; left: 0; right: 0; top: 0; box-shadow: rgba(0,0,0,0.1) 0 0.8rem 0.8rem; z-index: 100; background-color: #fff; }
-header .conBox_1128 { position: relative; display: flex; justify-content:space-between; align-items: center; height: 8rem; }
+header .content_guide { position: relative; display: flex; justify-content:space-between; align-items: center; height: 8rem; }
 header h1 { font-size: 3.2rem; font-weight: 700;}
 header h1 img { width: 5.5rem; margin-right: 1.2rem; }
 header h1 span { vertical-align: middle; }
@@ -67,7 +67,7 @@ footer { display: flex; justify-content: center; align-items: center; flex-direc
 .list li { width: 25%; cursor: pointer; }
 .list .imgConbox { position: relative; display: flex; border-radius: 1.2rem; overflow: hidden; height: 21rem; }
 .list .imgConbox img { object-fit: cover; width: 100%; }
-.label_star { position: absolute; right: 1.2rem; bottom: 1.2rem; width: 2.4rem; height: 2.4rem; background: url('../public/ico_bookOff.png') no-repeat center / 2.4rem; transition: 0.3s; cursor: pointer; }
+.label_star { position: absolute; right: 0; bottom: 1.2rem; padding-left: 4rem; height: 3.2rem; line-height: 3.2rem; background: url('../public/ico_bookOff.png') no-repeat 0 / 3.2rem; transition: 0.3s; cursor: pointer; font-size: 2.4rem; color: #fff; font-weight: 700; }
 .inp_star:checked + .label_star { background-image: url('../public/ico_bookOn.png'); }
 .txtConbox { display: flex; justify-content: space-between; padding-top: 1.2rem; line-height: 2.4rem; }
 .listTit strong { display: block; font-weight: 800; } 
@@ -80,3 +80,11 @@ footer { display: flex; justify-content: center; align-items: center; flex-direc
     .list { flex-wrap: wrap; }
     .list li { width: calc(50% - 1.2rem); }
 }
+
+/* 메인 이미지 모달 */
+.detailPop { position: fixed; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.4); display: flex; align-items: center; justify-content: center; z-index: 101; }
+.detailPop.none { display: none; }
+.img_conBox { position: relative; display: flex; width: 90%; max-width: 74.4rem; height: 48rem; box-shadow: rgba(0, 0, 0, 0.5) 0 0 3.6rem; border-radius: 1.2rem; overflow: hidden; background-color: #fff;}
+.img_conBox img { object-fit: cover; width: 100%; }
+.closeBtn { position: absolute; right: 2.4rem; top: 2.4rem; width: 2.4rem; height: 2.4rem; background: url('../public/ico_round-close.png') no-repeat center / 2.4rem }
+.img_conBox .label_star { right: auto; left: 2.4rem; bottom: 2.7rem; }
